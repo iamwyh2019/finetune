@@ -1,0 +1,25 @@
+path: ../affordance
+
+train: train/images
+val: valid/images
+test: test/images
+
+names: 
+  0: Carafe Base
+  1: Carafe Handle
+  2: Cup Base
+  3: Cup Handle
+  4: Fork Handle
+  5: Fork Tines
+  6: Knife Blade
+  7: Knife Handle
+  8: Ladle Bowl
+  9: Ladle Handle
+  10: Pan Base
+  11: Pan Handle
+  12: Scissor Blade
+  13: Scissor Handle
+  14: Spatula Handle
+  15: Spatula Head
+  16: Spoon Bowl
+  17: Spoon Handle

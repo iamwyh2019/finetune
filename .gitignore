@@ -1,0 +1,8 @@
+# py cache
+__pycache__/
+
+# pt files
+*.pt
+
+# wandb
+wandb/
