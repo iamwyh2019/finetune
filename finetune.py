@@ -17,6 +17,11 @@ if __name__ == '__main__':
     #             freeze=10, cache=True, name='affordance-freezebackbone', exist_ok=True, mosaic=0)
 
     # train with lower LR (lr0=0.001, momentum=0.9)
+    # model.train(data='affordance.yaml', pretrained=True, epochs=300, save_period=20, device=0,
+    #             freeze=10, cache=True, name='affordance-lr0.001', exist_ok=True, mosaic=0, lr0=0.001, momentum=0.9,
+    #             optimizer='SGD')
+
+    # train with lower LR (lr0=0.0002, momentum=0.9), and higher weight decay (weight_decay=0.0007)
     model.train(data='affordance.yaml', pretrained=True, epochs=300, save_period=20, device=0,
-                freeze=10, cache=True, name='affordance-lr0.001', exist_ok=True, mosaic=0, lr0=0.001, momentum=0.9,
-                optimizer='SGD')
+                freeze=10, cache=True, name='affordance-lr0.0002', exist_ok=True, mosaic=0, lr0=0.0002, momentum=0.9,
+                optimizer='SGD', weight_decay=0.0007)
