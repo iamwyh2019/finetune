@@ -13,7 +13,7 @@ cache: true
 device: 0
 workers: 8
 project: null
-name: vistas-lr0.001
+name: vistas-lr0.002
 exist_ok: true
 pretrained: true
 optimizer: SGD
@@ -73,7 +73,7 @@ simplify: false
 opset: null
 workspace: 4
 nms: false
-lr0: 0.001
+lr0: 0.002
 lrf: 0.01
 momentum: 0.9
 weight_decay: 0.0005
@@ -106,4 +106,4 @@ erasing: 0.4
 crop_fraction: 1.0
 cfg: null
 tracker: botsort.yaml
-save_dir: runs/segment/vistas-lr0.001
+save_dir: runs/segment/vistas-lr0.002
