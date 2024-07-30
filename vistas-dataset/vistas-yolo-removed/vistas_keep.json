@@ -1,7 +1,7 @@
 {
     "animal--bird": false,
     "animal--ground-animal": false,
-    "construction--barrier--ambiguous": true,
+    "construction--barrier--ambiguous": false,
     "construction--barrier--concrete-block": true,
     "construction--barrier--curb": true,
     "construction--barrier--fence": true,
