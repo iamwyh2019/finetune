@@ -1,27 +1,11 @@
 from ultralytics import YOLO
+from ultralytics.utils.plotting import plot_results
 
 model = YOLO('yolov8x-seg.pt')
 
 if __name__ == '__main__':
-    # for X model, it has 23 layers, so freeze 22 layers
-    # model.train(data='affordance.yaml', pretrained=True, epochs=300, save_period=20, device=0,
-    #             freeze=22, cache=True, name='affordance-freezeall', exist_ok=True)
-    # model.train(resume=True)
-
-    # train without mosaic
-    # model.train(data='affordance.yaml', pretrained=True, epochs=300, save_period=20, device=0,
-    #             freeze=22, cache=True, name='affordance-nomosaic', exist_ok=True, mosaic=0)
-
-    # train with the backbone frozen (freeze=10)
-    # model.train(data='affordance.yaml', pretrained=True, epochs=300, save_period=20, device=0,
-    #             freeze=10, cache=True, name='affordance-freezebackbone', exist_ok=True, mosaic=0)
-
-    # train with lower LR (lr0=0.001, momentum=0.9)
-    # model.train(data='affordance.yaml', pretrained=True, epochs=300, save_period=20, device=0,
-    #             freeze=10, cache=True, name='affordance-lr0.001', exist_ok=True, mosaic=0, lr0=0.001, momentum=0.9,
-    #             optimizer='SGD')
-
-    # train with lower LR (lr0=0.0002, momentum=0.9), and higher weight decay (weight_decay=0.0007)
-    model.train(data='affordance.yaml', pretrained=True, epochs=300, save_period=20, device=0,
-                freeze=10, cache=True, name='affordance-lr0.0002', exist_ok=True, mosaic=0, lr0=0.0002, momentum=0.9,
-                optimizer='SGD', weight_decay=0.0007)
+    # train with lower LR (lr0=0.0001, momentum=0.9)
+    # freeze the backbone (the first 10 layers)
+    model.train(data='data-vistas-removed.yaml', pretrained=True, epochs=150, device=0, exist_ok=True,
+                freeze=10, cache=True, name='vistas-lr0.001', mosaic=0, lr0=0.001, momentum=0.9,
+                optimizer='SGD')

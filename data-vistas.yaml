@@ -1,8 +1,6 @@
 path: ../vistas-yolo # dataset root dir
 train: images/train
 val: images/val
-test: # no test images
-
 names:
   0: animal--bird
   1: animal--ground-animal

@@ -13,8 +13,9 @@ import time
 
 import traceback
 
+import random
 
-model_path = os.path.join(os.path.dirname(__file__), 'pt', 'yolov8x-segp.pt')
+model_path = 'runs/segment/vistas-newsimplified-lr0.001/weights/best.pt'
 model = YOLO(model_path)
 
 CLASSES: Dict[int, str] = model.names
@@ -325,20 +326,24 @@ def bitmap_to_polygon(bitmap):
 
 
 def main():
-    filename = 'crosswalk.jpg'
-    image = cv2.imread(filename)
-    if image is None:
-        print("Error: Image could not be read.")
-        return
+    val_path = '/datastore1/yolo/vistas-simplified/images/val'
 
-    results = get_recognition(image, score_threshold=0.5, top_k=70)
-    
-    image = async_draw_recognition(image, results, black=False, draw_contour=True, draw_mask=True, alpha=0.5, 
-                                   draw_box=True, draw_text=True, draw_score=True, draw_center=True, draw_tag=True)
+    all_pics = os.listdir(val_path)
+    # select 10 random images
+    demo_pics = random.sample(all_pics, 10)
 
-    output_filename = filename.split('.')[0] + '-demo.jpg'
-    cv2.imwrite(output_filename, image)
-    print(f"Processed image saved as {output_filename}")
+    for pic in demo_pics:
+        filename = os.path.join(val_path, pic)
+        image = cv2.imread(filename)
+        results = get_recognition(image, score_threshold=0.5, top_k=70)
+        
+        image = async_draw_recognition(image, results, black=False, draw_contour=True, draw_mask=True, alpha=0.5, 
+                                       draw_box=False, draw_text=True, draw_score=True, draw_center=False, draw_tag=False)
+
+        output_filename = os.path.join('demo', filename.split('.')[0] + '-demo.jpg')
+        cv2.imwrite(output_filename, image)
+        print(f"Processed image saved as {output_filename}")
+
 
 if __name__ == '__main__':
     main()
